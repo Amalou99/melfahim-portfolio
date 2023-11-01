@@ -1,11 +1,6 @@
 'use client';
-import React, { useState } from "react";
-import { genPageMetadata } from 'app/seo'
+import React, { useState } from 'react';
 
-const handleSubmit = async(e) => {
-    console.log("Heeeeey from here !");
-    console.log("e: "+e);
-}
 export default function contact() {
 
     const [email, setEmail] = useState("");
@@ -15,7 +10,6 @@ export default function contact() {
     const handleSubmit = async (e) => {
         e.preventDefault();
     
-        //let isValidForm = handleValidation();
         const res = await fetch("/api/sendgrid", {
             body: JSON.stringify({
               email: email,
@@ -27,7 +21,6 @@ export default function contact() {
             },
             method: "POST",
           });
-    
           const { error } = await res.json();
           if (error) {
             console.log(error);
