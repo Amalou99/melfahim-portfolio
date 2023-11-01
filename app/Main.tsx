@@ -21,7 +21,7 @@ export default function Home({ posts }) {
         <div className='flex flex-col items-center gap-4 rounded-2xl bg-blue-100/25 p-6 shadow-md dark:bg-gray-600 sm:col-span-4 lg:col-span-3'>
           <div className="text-8xl">🤌🏻</div>
           <div className="text-xl font-bold">@elfahim_maymoun</div>
-          <div title="description">Software Engineer 🔵 DevOps Enthusiast<br/><p className="mt-2 text-center">Moving slowley but surley ! 🐢️️</p></div>
+          <div title="description">Software Engineer 🔵 DevOps Enthusiast<br/><p className="mt-2 text-center">ⵜⵉⵎⵇⵉⵜ ⵙ ⵜⵉⵎⵇⵉⵜ ⴰⵙ ⵉⵏⴳⵉ ⴰⵙⵉⴼ ! 💧</p></div>
         </div>
       </div>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">

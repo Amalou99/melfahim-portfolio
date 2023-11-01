@@ -18,23 +18,6 @@ const projectsData = [
     imgSrc: '/static/images/LaVieLiquide.jpg',
     href: '/blog/the-time-machine',
   },
-  {
-    title: 'Kafka: The Definitive Guide',
-    description: `What is Kafka, and how does it work? In this comprehensive e-book, 
-    you'll get full introduction to Apache Kafka® , the distributed, publish-subscribe queue for handling real-time data feeds.  
-    Learn how Kafka works, internal architecture, what it's used for, 
-    and how to take full advantage of Kafka stream processing technology.`,
-    imgSrc: '/static/images/kafka.jpg',
-    href: '/blog/the-time-machine',
-  },
-  {
-    title: 'Cracking the coding interview',
-    description: `Cracking the Coding Interview is here to help you through this process, 
-    teaching you what you need to know and enabling you to perform at your very best. 
-    I've coached and interviewed hundreds of software engineers.`,
-    imgSrc: '/static/images/crackingCodingInterview.png',
-    href: '/blog/the-time-machine',
-  },
 ]
 
 export default projectsData
