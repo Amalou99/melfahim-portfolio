@@ -1,22 +1,22 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Tach Blog',
+  title: 'Tech Blog',
   author: 'EL-FAHIM Maymoun',
   headerTitle: 'TechBlog',
   description: 'A blog to publish some articles and introduce who is EL-FAHIM Maymoun',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
-  siteRepo: 'https://github.com/timlrx/tailwind-nextjs-starter-blog',
+  siteRepo: 'https://github.com/Amalou99/melfahim-portfolio',
   siteLogo: '/static/images/logo.png',
   socialBanner: '/static/images/twitter-card.png',
   mastodon: 'https://mastodon.social/@mastodonuser',
-  email: 'address@yoursite.com',
-  github: 'https://github.com',
-  twitter: 'https://twitter.com/Twitter',
+  email: 'elfahim.maymoun99@gmail.com',
+  github: 'https://github.com/Amalou99',
+  twitter: 'https://twitter.com/Amalou88188197',
   facebook: 'https://facebook.com',
   youtube: 'https://youtube.com',
-  linkedin: 'https://www.linkedin.com',
+  linkedin: 'https://linkedin.com/in/maymoun-elfahim',
   locale: 'en-US',
   analytics: {
     // If you want to use an analytics provider you have to add it to the
