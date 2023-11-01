@@ -3,7 +3,7 @@ const siteMetadata = {
   title: 'Tech Blog',
   author: 'EL-FAHIM Maymoun',
   headerTitle: 'TechBlog',
-  description: 'A blog to publish some articles and introduce who is EL-FAHIM Maymoun',
+  description: 'A blog to publish some articles and introduce who i am',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
