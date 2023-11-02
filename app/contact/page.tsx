@@ -1,15 +1,13 @@
-'use client';
-import React, { useState } from 'react';
+'use client'
+import React, { useState } from 'react'
 
-export default function contact() {
-
+export default function Contact() {
     const [email, setEmail] = useState("");
     const [subject, setSubject] = useState("");
     const [message, setMessage] = useState("");
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-    
+        e.preventDefault()
         const res = await fetch("/api/sendgrid", {
             body: JSON.stringify({
               email: email,

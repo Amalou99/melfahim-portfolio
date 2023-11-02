@@ -11,17 +11,29 @@ export default function Home({ posts }) {
       <div className="my-16 flex flex-col justify-center gap-4 md:flex-row md:justify-between">
         <div className="fade-in my-6 flex flex-col justify-center dark:text-white sm:col-span-4 sm:py-10 lg:col-span-5 lg:px-10">
           <h1 className="text-2xl font-bold dark:text-white lg:text-3xl"> Hello, I am Maymoun</h1>
-          <p className="my-2 text-lg lg:my-4 lg:text-2xl"> Software Engineer | DevOps Enthusiast</p>
-          <p className="text-xl leading-8 tracking-tight">Read more 
-            <a href='/about' className='ml-2 mr-2 font-normal bg-red-300'>about me</a>
+          <p className="my-2 text-lg lg:my-4 lg:text-2xl">
+            {' '}
+            Software Engineer | DevOps Enthusiast
+          </p>
+          <p className="text-xl leading-8 tracking-tight">
+            Read more 
+            <a href='/about' className='ml-2 mr-2 font-normal bg-red-300'>
+              about me
+            </a>
             or 
-            <a href='/contact' className='ml-2 mr-2 font-normal bg-red-300'>contact me</a>
+            <a href='/contact' className='ml-2 mr-2 font-normal bg-red-300'>
+              contact me
+            </a>
           </p>
         </div>
         <div className="flex flex-col items-center gap-4 rounded-2xl bg-blue-100/25 p-6 shadow-md dark:bg-gray-600 sm:col-span-4 lg:col-span-3">
           <div className="text-8xl">🤌🏻</div>
           <div className="text-xl font-bold">@elfahim_maymoun</div>
-          <div title="description">Software Engineer 🔵 DevOps Enthusiast<br/><p className="mt-2 text-center">ⵜⵉⵎⵇⵉⵜ ⵙ ⵜⵉⵎⵇⵉⵜ ⴰⵙ ⵉⵏⴳⵉ ⴰⵙⵉⴼ ! 💧</p></div>
+          <div title="description">
+            Software Engineer 🔵 DevOps Enthusiast
+            <br/>
+            <p className="mt-2 text-center">ⵜⵉⵎⵇⵉⵜ ⵙ ⵜⵉⵎⵇⵉⵜ ⴰⵙ ⵉⵏⴳⵉ ⴰⵙⵉⴼ ! 💧</p>
+          </div>
         </div>
       </div>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
