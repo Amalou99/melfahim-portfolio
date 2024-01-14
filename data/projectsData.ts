@@ -7,7 +7,7 @@ const projectsData = [
     Through historical and contemporary examples, it illustrates the consequences of ego-driven behavior. Ultimately, 
     it encourages readers to master their egos for long-term success and self-improvement.`,
     imgSrc: '/static/images/egoIsThEnemy.jpg',
-    href: 'https://www.google.com',
+    href: '/blog/ego-is-the-enemy',
   },
   {
     title: 'La Vie Liquide',
@@ -16,7 +16,7 @@ const projectsData = [
     Il explore comment ces changements ont affecté la vie personnelle, le travail et la politique. 
     Bauman encourage la réflexion sur la façon dont nous pouvons naviguer dans cette société liquide en recherchant des valeurs de solidarité et d'empathie.`,
     imgSrc: '/static/images/LaVieLiquide.jpg',
-    href: '/blog/the-time-machine',
+    href: '/blog/la-vie-liquide',
   },
 ]
 

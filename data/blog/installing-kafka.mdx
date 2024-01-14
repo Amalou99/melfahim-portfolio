@@ -1,0 +1,129 @@
+---
+title: 'Installing Kafka'
+date: '2023-10-18'
+lastmod: '2023-10-18'
+tags: ['kafka', 'book', 'DevOps', 'data', 'java']
+draft: false
+summary: 'Apache Kafka is a distributed event store and stream-processing platform. It is an open-source system developed by the Apache Software Foundation written in Java and Scala. The project aims to provide a unified, high-throughput, low-latency platform for handling real-time data feeds. Kafka can connect to external systems (for data import/export) via Kafka Connect, and provides the Kafka Streams libraries for stream processing applications.'
+images: ['/static/images/kafka.jpg']
+---
+
+## Introduction
+
+Every entreprise is powered by data. We take information in, analyse it, manipulate it, and create more as output. Every application creates data, wether it is log messages, metrics, user activity, outgoing messages, or somethings else. Every byte of data has a stort to tell, something of importance that will inform the next things to be done. In order to know what that is, we need to get the data from where it is created to where it can be analyzed. We see yhis every day on websites like Amazon, where our clicks on items of interest to us are tuned into recommendations that are shown to us a little later.
+
+<TOCInline toc={props.toc} exclude="Introduction" />
+
+## Publish/Subscribe Messaging
+
+![Publish Subscribe Messaging](/static/images/pub_sub.png)
+
+Publish/subscribe (pub/sub) messaging is a pattern that is characterized by the sender (publisher) of a piece of data (message) not specifically directing it to a receiver.
+Instead, the publisher classifies the message somehow, and that receiver (subscribe) subscribe to receive certain classes of messages.
+Bpu/Sub system often have a broker, a central point where messages are published, to facilitate this pattern.
+
+## Enter Kafka
+
+Apache Kafka was developed as a publish/subscribe messaging system designed to solve business grows problems.kafka facilitate having a single centralized system that allows for pblishing generic types of data.
+
+### Messages and Batches
+
+The unit of data within Kafka is called a message, similar to a row or record in database environement.A message is simply an array of bytes as a Kafka is concerned, a message can have an optional piece of metadata, witch is referred to as a key.
+For effeciency, messages are written into Kafka in batches. A batch is just a collection of messages, all of witchare being produced to the same topic and partition.Of course, these is a trade-off between latency and throughput: the larger the batches, the more messages that can be handled per unit of time, but the longer it takes an individual message to propagate.
+
+### Schemas
+
+While messaging are opaque byte arrays to Kafka itself, it is recommended that additionnal structure, or schema, be imposed on the message content so that it can be easily understood.
+There are many options available for message schema, depending in application individual needs. Simplistic systems, such as [JSON](https://www.json.org/json-en.html) and [XML](https://en.wikipedia.org/wiki/XML) are easy to use and human readable.However, they lack features such as robust type handling and compatibility between schema versions.
+Many Kafka developers favor the use of [Apache Avro](https://avro.apache.org/) which is a serialization frameworkoriginally developed for Hadoop.
+
+### Topics and Partitions
+
+Messages in Kafka are categorized into topics. The closest analogies for a topic are a database table. Topics are additionally broken down into a number of partitionss.Note that as a topic typically has multiple partitions, there is no guarantee of message ordering across the entire topic, just within a single partition.
+Partitions are also the way that Kafka provides redundancy ans scalability.Each partition can be hosted on a different server, which means that a single topic can be scaled horizontally.
+
+### Producers and Consumers
+
+What's a blog in 2023 without a command palette search bar?
+
+One of the most highly requested features have been added 🎉! The search component supports 2 search providers - Algolia and Kbar local search.
+
+### Brokers and Clusters
+
+[Algolia Docsearch](https://docsearch.algolia.com/) is popular free service used across many documentation websites. It automatically scrapes the website that has is submitted for indexing and makes the search result available via a beautiful dialog modal. The pliny component is greatly inspired by the Docusaurus implementation and comes with a stylesheet that is compatible with the Tailwind CSS theme.
+
+### Multiple Clusters
+
+[Kbar](https://github.com/timc1/kbar) is a fast, portable, and extensible cmd+k interface. The pliny implementation uses kbar to create a local search dialog box. The component loads a JSON file, default `search.json`, that was created in the contentlayer build process. Try pressing ⌘-k or ctrl-k to see the search bar in action!
+
+## Why Kafka
+
+### Multiple Producers
+
+`tailwind.config.js` has been updated to use tailwind typography defaults where possible and to use the built-in support for dark mode via the `prose-invert` class. This replaces the previous `prose-dark` class and configuration.
+
+The primary theme color is updated from `teal` to `pink` and the primary gray theme from `neutral` to `gray`.
+
+Inter is now replaced with Space Grotesk as the default font.
+
+### Multiple Consumers
+
+Layout components available in the `layouts` directory, provide a simple way to customize the look and feel of the blog.[^2]
+
+The downside of building a popular template is that you start seeing multiple similar sites everywhere 😆. While users are encouraged to customized the layouts to their liking, having more layout options that are easily switchable promotes diversity and perhaps can be a good starting point for further customizations.
+
+In v2, I added a new post layout - `PostBanner`. It features a large banner image and a centered content container. Check out "[Pictures of Canada](/blog/pictures-of-canada)" blog post which has been updated to use the new layout.
+
+The default blog listing layout has also been updated to include a side bar with blog tags. The search bar in the previous layout has been replace with the new command palette search. To switch back to the old layout, simply change the pages that use the `ListLayoutWithTags` component back to the original `ListLayout`.
+
+### Disk-Based Retention
+
+Due to the large changes in directory structure, setup and tooling, I recommend starting from a fresh template and copying existing content, followed by incrementally migrating changes over to the new template.
+
+Styling changes should be relatively minor and can be copied over from the old `tailwind.config.js` to the new one. If copying over, you might need to add back the `prose-dark` class to components that opt into tailwind typography styling. Do modify the font import in the root layout component to use the desired font of choice.
+
+Changes to the MDX processing pipeline and schema can be easily ported to the new Contentlayer setup. If there are changes to the frontmatter fields, you can modify the document type in `contentlayer.config.ts` to include the new fields. Custom plugins can be added to the `remarkPlugins` and `rehypePlugins` properties in the `makeSource` export of `contentlayer.config.ts`.
+
+Markdown layouts are no longer sourced automatically from the `layouts` directory. Instead, they have to be specified in the `layouts` object defined in `blog/[...slug]/page.tsx`.[^3]
+
+To port over larger components or pages, I recommend first specificing it as a client component by using the `"use client"` directive. Once it renders correctly, you can split the interactive components (parts that rely on `use` hooks) as a client component and keep the remaining code as a server component. Consult the comprehensive Next.js [migration guide](https://nextjs.org/docs/app/building-your-application/upgrading/app-router-migration#migrating-from-pages-to-app) for more details.
+
+### Scalable
+
+Due to the large changes in directory structure, setup and tooling, I recommend starting from a fresh template and copying existing content, followed by incrementally migrating changes over to the new template.
+
+Styling changes should be relatively minor and can be copied over from the old `tailwind.config.js` to the new one. If copying over, you might need to add back the `prose-dark` class to components that opt into tailwind typography styling. Do modify the font import in the root layout component to use the desired font of choice.
+
+Changes to the MDX processing pipeline and schema can be easily ported to the new Contentlayer setup. If there are changes to the frontmatter fields, you can modify the document type in `contentlayer.config.ts` to include the new fields. Custom plugins can be added to the `remarkPlugins` and `rehypePlugins` properties in the `makeSource` export of `contentlayer.config.ts`.
+
+Markdown layouts are no longer sourced automatically from the `layouts` directory. Instead, they have to be specified in the `layouts` object defined in `blog/[...slug]/page.tsx`.[^3]
+
+To port over larger components or pages, I recommend first specificing it as a client component by using the `"use client"` directive. Once it renders correctly, you can split the interactive components (parts that rely on `use` hooks) as a client component and keep the remaining code as a server component. Consult the comprehensive Next.js [migration guide](https://nextjs.org/docs/app/building-your-application/upgrading/app-router-migration#migrating-from-pages-to-app) for more details.
+
+### High Performance
+
+Due to the large changes in directory structure, setup and tooling, I recommend starting from a fresh template and copying existing content, followed by incrementally migrating changes over to the new template.
+
+Styling changes should be relatively minor and can be copied over from the old `tailwind.config.js` to the new one. If copying over, you might need to add back the `prose-dark` class to components that opt into tailwind typography styling. Do modify the font import in the root layout component to use the desired font of choice.
+
+Changes to the MDX processing pipeline and schema can be easily ported to the new Contentlayer setup. If there are changes to the frontmatter fields, you can modify the document type in `contentlayer.config.ts` to include the new fields. Custom plugins can be added to the `remarkPlugins` and `rehypePlugins` properties in the `makeSource` export of `contentlayer.config.ts`.
+
+Markdown layouts are no longer sourced automatically from the `layouts` directory. Instead, they have to be specified in the `layouts` object defined in `blog/[...slug]/page.tsx`.[^3]
+
+To port over larger components or pages, I recommend first specificing it as a client component by using the `"use client"` directive. Once it renders correctly, you can split the interactive components (parts that rely on `use` hooks) as a client component and keep the remaining code as a server component. Consult the comprehensive Next.js [migration guide](https://nextjs.org/docs/app/building-your-application/upgrading/app-router-migration#migrating-from-pages-to-app) for more details.
+
+### Platform Features
+
+Due to the large changes in directory structure, setup and tooling, I recommend starting from a fresh template and copying existing content, followed by incrementally migrating changes over to the new template.
+
+Styling changes should be relatively minor and can be copied over from the old `tailwind.config.js` to the new one. If copying over, you might need to add back the `prose-dark` class to components that opt into tailwind typography styling. Do modify the font import in the root layout component to use the desired font of choice.
+
+Changes to the MDX processing pipeline and schema can be easily ported to the new Contentlayer setup. If there are changes to the frontmatter fields, you can modify the document type in `contentlayer.config.ts` to include the new fields. Custom plugins can be added to the `remarkPlugins` and `rehypePlugins` properties in the `makeSource` export of `contentlayer.config.ts`.
+
+Markdown layouts are no longer sourced automatically from the `layouts` directory. Instead, they have to be specified in the `layouts` object defined in `blog/[...slug]/page.tsx`.[^3]
+
+To port over larger components or pages, I recommend first specificing it as a client component by using the `"use client"` directive. Once it renders correctly, you can split the interactive components (parts that rely on `use` hooks) as a client component and keep the remaining code as a server component. Consult the comprehensive Next.js [migration guide](https://nextjs.org/docs/app/building-your-application/upgrading/app-router-migration#migrating-from-pages-to-app) for more details.
+
+## Conclusion
+
+I hope you enjoy the new features and improvements in V2. If you have any feedback or suggestions, feel free to open an issue or reach out to me on [Twitter](https://twitter.com/Amalou88188197).
